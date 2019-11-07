@@ -2,11 +2,12 @@ import axios from 'axios';
 
 //action types
 export const START_FETCHING_FILMS = 'START_FETCHING_FILMS';
-// export const START_FETCHING_CHARACTERS = 'START_FETCHING_CHARACTERS';
+export const FETCH_SUCCESS_FILMS = 'FETCH_SUCCESS_FILMS'
+export const START_FETCHING_CHARACTERS = 'START_FETCHING_CHARACTERS';
+export const FETCH_SUCCESS_CHARACTERS = 'FETCH_SUCCESS_CHARACTERS'
 // export const START_FETCHING_PLACES = 'START_FETCHING_PLACES';
 // export const START_FETCHING_VEHICLES = 'START_FETCHING_VEHICLES';
-export const FETCH_SUCCESS_FILMS = 'FETCH_SUCCESS_FILMS'
-// export const FETCH_SUCCESS_CHARACTERS = 'FETCH_SUCCESS_CHARACTERS'
+
 // export const FETCH_SUCCESS_PLACES = 'FETCH_SUCCESS_PLACES'
 // export const FETCH_SUCCESS_VEHICLES = 'FETCH_SUCCESS_VEHICLES'
 export const FETCH_FAILURE = 'FETCH_FAILURE'
@@ -20,5 +21,14 @@ export const fetchFilms = () => dispatch => {
     .then(res => {
       console.log(res.data)
       dispatch({ type: FETCH_SUCCESS_FILMS, payload: res.data })})
+    .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }))
+}
+
+export const fetchCharacters = () => dispatch => {
+  dispatch({ type: START_FETCHING_CHARACTERS })
+  axios.get('https://ghibliapi.herokuapp.com/people')
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: FETCH_SUCCESS_CHARACTERS, payload: res.data })})
     .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }))
 }

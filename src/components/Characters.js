@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchCharacters } from './../actions';
 import Character from './Character'
 
-const Characters = () => {
+const Characters = (props) => {
+
+  useEffect(() => {
+    props.fetchCharacters()
+  }, [])
+
   return (
-    <Character />
+    <div>
+    {props.characters.map(character => {
+      return <Character character={character}/>
+    })}
+    
+    </div>
   )
 }
 
-export default Characters
+const mapStateToProps = state => {
+  return {
+    characters: state.characters
+  }
+}
+
+export default connect(mapStateToProps, { fetchCharacters })(Characters);

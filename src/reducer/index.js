@@ -1,6 +1,11 @@
-import { START_FETCHING_FILMS, FETCH_SUCCESS_FILMS,  FETCH_FAILURE, } from '../actions'
+import { 
+  START_FETCHING_FILMS, FETCH_SUCCESS_FILMS,
+  START_FETCHING_CHARACTERS, FETCH_SUCCESS_CHARACTERS,
+  // START_FETCHING_PLACES, FETCH_SUCCESS_PlACES,
+  // START_FETCHING_VEHICLES, FETCH_SUCCESS_VEHICLES
+  FETCH_FAILURE, } from '../actions'
 
-// START_FETCHING_FILMS, START_FETCHING_CHARACTERS, START_FETCHING_PLACES, START_FETCHING_VEHICLES, FETCH_SUCCESS_FILMS, FETCH_SUCCESS_PlACES, FETCH_SUCCESS_CHARACTERS, FETCH_FAILURE, FETCH_SUCCESS_VEHICLES
+  
 
 const initialState = {
   films: [],
@@ -27,19 +32,19 @@ const reducer = (state = initialState, action) => {
         films: action.payload
       }
 
-    // case START_FETCHING_CHARACTERS:
-    //   return {
-    //     ...state, 
-    //     isFetching: true
-    //   }
+    case START_FETCHING_CHARACTERS:
+      return {
+        ...state, 
+        isFetching: true
+      }
 
-    // case FETCH_SUCCESS_CHARACTERS:
-    //   return {
-    //     ...state,
-    //     isFetching: false,
-    //     error: '',
-    //     characters: action.payload
-    //   }
+    case FETCH_SUCCESS_CHARACTERS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        characters: action.payload
+      }
 
     // case START_FETCHING_PLACES:
     //   return {

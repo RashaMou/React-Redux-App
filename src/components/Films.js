@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Film from './Film';
-import {fetchFilms} from './../actions';
+import { fetchFilms } from './../actions';
 
 const Films = (props) => {
 
@@ -26,4 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchFilms})(Films);
+export default connect(mapStateToProps, { fetchFilms })(Films);

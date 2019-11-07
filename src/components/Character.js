@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Character = () => {
+const Character = (props) => {
   return (
-    <h3>Character</h3>
+    <h3>{props.character.name}</h3>
   )
 }
 
